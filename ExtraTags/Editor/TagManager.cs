@@ -40,12 +40,12 @@ public class TagManager : Editor
     {
         if (m_TagObject.m_Tags.Count != 0)
         {
-            GUILayout.Label("Tags On GameObject: ");
+            GUILayout.Label("Tags On GameObject: ", EditorStyles.miniBoldLabel);
             for (int i = 0; i < m_TagObject.m_Tags.Count; i++)
             {
-                GUILayout.BeginHorizontal();
-                GUILayout.Label(m_TagObject.m_Tags[i]);
-                if (GUILayout.Button("-", GUILayout.Width(50)))
+                GUILayout.BeginHorizontal(EditorStyles.helpBox);
+                GUILayout.Label(m_TagObject.m_Tags[i], EditorStyles.miniLabel);
+                if (GUILayout.Button("-", EditorStyles.miniButton, GUILayout.Width(30)))
                 {
                     m_TagObject.m_Tags.RemoveAt(i);
                 }
@@ -62,12 +62,12 @@ public class TagManager : Editor
     private void databaseTagAdder()
     {
         //display all the tags
-        GUILayout.Label("Tags From Database: ", EditorStyles.boldLabel);
+        GUILayout.Label("Tags From Database: ", EditorStyles.miniBoldLabel);
         for (int i = 0; i < Tags.m_Tags.Count; i++)
         {
-            GUILayout.BeginHorizontal();
-            GUILayout.Label(Tags.m_Tags[i]);
-            if (GUILayout.Button("+", GUILayout.Width(50)))
+            GUILayout.BeginHorizontal(EditorStyles.helpBox);
+            GUILayout.Label("- " + Tags.m_Tags[i], EditorStyles.miniLabel);
+            if (GUILayout.Button("+", EditorStyles.miniButton, GUILayout.Width(30)))
             {
                 m_TagObject.m_Tags.Add(Tags.m_Tags[i]);
             }
