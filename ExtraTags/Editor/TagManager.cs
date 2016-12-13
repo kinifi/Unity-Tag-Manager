@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -20,6 +20,7 @@ public class TagManager : Editor
         {
             GUILayout.Label("Assign A Tag Manager Asset", EditorStyles.boldLabel);
         }
+        //add a object field so we can get the database
         Tags = (TagDatabase)EditorGUILayout.ObjectField(Tags, typeof(TagDatabase), true);
         GUILayout.Space(5);
 
@@ -68,14 +69,7 @@ public class TagManager : Editor
             GUILayout.Label(Tags.m_Tags[i]);
             if (GUILayout.Button("+", GUILayout.Width(50)))
             {
-                if (Tags.hasTag(Tags.m_Tags[i]) == false)
-                {
-                    m_TagObject.m_Tags.Add(Tags.m_Tags[i]);
-                }
-                else
-                {
-                    Debug.Log("TagManager: GameObject already has the tag you are attempting to assign: " + Tags.m_Tags[i]);
-                }
+                m_TagObject.m_Tags.Add(Tags.m_Tags[i]);
             }
             GUILayout.EndHorizontal();
         }
